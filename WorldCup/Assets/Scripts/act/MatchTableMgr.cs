@@ -10,7 +10,6 @@ public class MatchTableMgr : UIBase
     public TextMeshProUGUI cnt = null;
     public int count = 0;
     public List<MatchPrefab> matchList;
-    
     public int categoryIndex = 0;
     public int RoundIndex = 0;
     public List <Dictionary<string, Sprite>> directoryImgList = new List<Dictionary<string, Sprite>>();
@@ -28,7 +27,7 @@ public class MatchTableMgr : UIBase
         matchList[0].Selected();
         txt.text = App.inst.controller.selectedcategoryName + App.inst.controller.selectedRound;
         InitImg();
-        StartGame(RoundIndex);
+        
     }
     
     public void SelectedItem(int idx)
@@ -42,7 +41,13 @@ public class MatchTableMgr : UIBase
 
     public void InitImg()
     {
-        curCategoryGameDic = directoryImgList[categoryIndex];
+        if (directoryImgList[categoryIndex].Count == 0)
+            App.inst.uiMgr.PopImg.SetActive(true);
+        else
+        {
+            curCategoryGameDic = directoryImgList[categoryIndex];
+            StartGame(RoundIndex);
+        }
     }
 
     public void StartGame(int roundSize)
@@ -126,10 +131,19 @@ public class MatchTableMgr : UIBase
     }
     void ShowWinner(KeyValuePair<string, Sprite> winner)
     {
-        matchList[0].img.sprite = winner.Value;
-        matchList[0].text.text = "Winner: " + winner.Key;
+        Hide(() =>
+        {
+            Reset();
+            App.inst.uiMgr.resultMgr.result.text.text = winner.Key;
+            App.inst.uiMgr.resultMgr.result.img.sprite = winner.Value;
+            App.inst.uiMgr.resultMgr.Show();
+        });
+        
+        
+        //matchList[0].img.sprite = winner.Value;
+        //matchList[0].text.text = "Winner: " + winner.Key;
 
-        matchList[1].gameObject.SetActive(false);
+        //matchList[1].gameObject.SetActive(false);
     }
 
     public void Reset()

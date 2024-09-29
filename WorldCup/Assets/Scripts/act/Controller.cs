@@ -77,17 +77,17 @@ public class Controller : MonoBehaviour
             {
                 index = (index + 1) % App.inst.uiMgr.matchTableMgr.matchList.Count;
                 App.inst.uiMgr.matchTableMgr.SelectedItem(index);
-                isLeft = false;
+                isRight = true;
             }
             else if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 index = (index - 1 + App.inst.uiMgr.matchTableMgr.matchList.Count) % App.inst.uiMgr.matchTableMgr.matchList.Count; 
                 App.inst.uiMgr.matchTableMgr.SelectedItem(index);
-                isLeft = true;
+                isRight = false;
                 
             }else if (Input.GetKeyDown(KeyCode.Return))
             {
-                if(isLeft)
+                if(!isRight)
                     App.inst.uiMgr.matchTableMgr.SelectLeft();
                 else
                     App.inst.uiMgr.matchTableMgr.SelectRight();
@@ -100,13 +100,47 @@ public class Controller : MonoBehaviour
                     App.inst.uiMgr.matchTableMgr.Reset();
                     App.inst.uiMgr.roundMgr.Show();
                 });
-                
+            }
+        }
+        
+        if (isGameStarted && App.inst.uiMgr.resultMgr.IsShow())
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                index = (index + 1) % App.inst.uiMgr.resultMgr.btnImg.Length;
+                App.inst.uiMgr.resultMgr.btnImg[0].color = Color.white;
+                App.inst.uiMgr.resultMgr.btnImg[1].color = Color.yellow;
+                isClick = true;
+            }
+            else if(Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                index = (index - 1 + App.inst.uiMgr.resultMgr.btnImg.Length) % App.inst.uiMgr.resultMgr.btnImg.Length; 
+                App.inst.uiMgr.resultMgr.btnImg[0].color = Color.yellow;
+                App.inst.uiMgr.resultMgr.btnImg[1].color = Color.white;
+                isClick = false;
+
+            }else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (!isClick)
+                {
+                    App.inst.uiMgr.resultMgr.Hide(() =>
+                    {
+                        App.inst.uiMgr.roundMgr.Show();
+                    });
+                }
+                else
+                {
+                    App.inst.uiMgr.resultMgr.Hide(() =>
+                    {
+                        App.inst.uiMgr.categoryMgr.Show();
+                    });
+                }
             }
         }
     }
 
-    public bool isLeft = false;
-    
+    public bool isRight = false;
+    public bool isClick = false;
     public void GameStart()
     {
         isGameStarted = true;

@@ -14,7 +14,7 @@ public class RoundMgr : UIBase
     public override void Show()
     {
         base.Show();
-        roundList[0].Selected();
+        SelectedItem(0);
         App.inst.controller.selectedRound = roundList[0].round;
     }
     
