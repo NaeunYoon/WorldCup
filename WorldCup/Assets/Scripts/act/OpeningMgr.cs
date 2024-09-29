@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpeningMgr : UIBase
+public class OpeningMgr : Mgrs
 {
     public override void Create()
     {

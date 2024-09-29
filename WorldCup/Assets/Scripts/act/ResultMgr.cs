@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ResultMgr : UIBase
+public class ResultMgr : Mgrs
 {
     public MatchPrefab result = null;
     public Image[] btnImg = new Image[2];
+    public bool isChecked =false;
+    
     public override void Create()
     {
         base.Create();
@@ -17,18 +19,21 @@ public class ResultMgr : UIBase
     public override void Show()
     {
         base.Show();
-        Invoke("EventMethod", 5f);
+        StartCoroutine(Delay());
     }
-   
-    void EventMethod()
+
+    IEnumerator Delay()
     {
-        Hide(() =>
+        yield return new WaitForSeconds(5f);
+        if (!isChecked)
         {
-            App.inst.controller.isGameStarted = false;
-            App.inst.uiMgr.openingMgr.Show();
-            
-        });
+            Hide(() =>
+            {
+                App.inst.controller.isGameStarted = false;
+                App.inst.uiMgr.openingMgr.Show();
+                StopCoroutine(   "Delay");;
+                
+            });
+        }
     }
-    
-    
 }

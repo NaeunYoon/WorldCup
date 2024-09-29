@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundMgr : UIBase
+public class RoundMgr : Mgrs
 {
     public List<RoundPrefab> roundList = null;
     public override void Create()

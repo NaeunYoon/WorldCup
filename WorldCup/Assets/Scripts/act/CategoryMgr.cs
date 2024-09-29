@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class CategoryMgr : UIBase
+public class CategoryMgr : Mgrs
 {
    public CategoryPrefab prefab = null;
    public GameObject content = null;
@@ -40,14 +40,13 @@ public class CategoryMgr : UIBase
          {
             t_prefab.text.color = Color.red;
          }
-         
          categoryList.Add(t_prefab);
       }
    }
    
    public bool Validation(Dictionary<string, Sprite> dir )
    {
-      if (dir.Count == 0 || dir.Count < 36)
+      if (dir.Count < 36)
       {
          return false;
       }
@@ -62,9 +61,6 @@ public class CategoryMgr : UIBase
       }
       categoryList[idx].Selected();
    }
-   
-
-   
    
    public override void Hide()
    {

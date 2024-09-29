@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MatchTableMgr : UIBase
+public class MatchTableMgr : Mgrs
 {
     public TextMeshProUGUI txt = null;
     public TextMeshProUGUI cnt = null;
@@ -24,7 +24,7 @@ public class MatchTableMgr : UIBase
     public override void Show()
     {
         base.Show();
-        matchList[0].Selected();
+        SelectedItem(0);
         txt.text = App.inst.controller.selectedcategoryName + App.inst.controller.selectedRound;
         InitImg();
         
@@ -138,12 +138,6 @@ public class MatchTableMgr : UIBase
             App.inst.uiMgr.resultMgr.result.img.sprite = winner.Value;
             App.inst.uiMgr.resultMgr.Show();
         });
-        
-        
-        //matchList[0].img.sprite = winner.Value;
-        //matchList[0].text.text = "Winner: " + winner.Key;
-
-        //matchList[1].gameObject.SetActive(false);
     }
 
     public void Reset()
