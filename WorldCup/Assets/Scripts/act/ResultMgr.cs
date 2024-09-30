@@ -19,14 +19,15 @@ public class ResultMgr : Mgrs
     public override void Show()
     {
         base.Show();
-        StartCoroutine(Delay());
+        //StartCoroutine(Delay());
+        isChecked = false;
     }
 
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(5f);
-        if (!isChecked)
-        {
+        // if (!isChecked)
+        // {
             Hide(() =>
             {
                 App.inst.controller.isGameStarted = false;
@@ -34,6 +35,6 @@ public class ResultMgr : Mgrs
                 StopCoroutine(   "Delay");;
                 
             });
-        }
+        //}
     }
 }

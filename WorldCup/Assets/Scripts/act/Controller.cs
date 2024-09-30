@@ -94,6 +94,9 @@ public class Controller : MonoBehaviour
                 App.inst.uiMgr.matchTableMgr.SelectLeft();
             else
                 App.inst.uiMgr.matchTableMgr.SelectRight();
+            
+            App.inst.uiMgr.matchTableMgr.SelectedItem(0);
+            isRight = false;
         }
 
         if (Input.GetKeyDown(KeyCode.X))
