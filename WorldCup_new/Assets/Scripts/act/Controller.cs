@@ -16,34 +16,34 @@ public class Controller : MonoBehaviour
     {
         if (!isGameStarted && App.inst.uiMgr.openingMgr.IsShow())
         {
-            HandleGameStart();
+            StartGame();
         }
 
         if (isGameStarted)
         {
             if (App.inst.uiMgr.categoryMgr.IsShow())
-                HandleCategorySelection();
+                CategorySelection();
 
             if (App.inst.uiMgr.roundMgr.IsShow())
-                HandleRoundSelection();
+                RoundSelection();
 
             if (App.inst.uiMgr.matchTableMgr.IsShow())
-                HandleMatchTableSelection();
+                MatchTableSelection();
 
             if (App.inst.uiMgr.resultMgr.IsShow())
-                HandleResultSelection();
+                ResultSelection();
         }
     }
 
-    void HandleGameStart()
+    void StartGame()
     {
         if (Input.GetKeyDown(KeyCode.A))
             GameStart();
     }
 
-    void HandleCategorySelection()
+    void CategorySelection()
     {
-        HandleSelection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.categoryMgr.categoryList.Count, (newIndex) =>
+        Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.categoryMgr.categoryList.Count, (newIndex) =>
         {
             App.inst.sfx.Play();
             App.inst.uiMgr.categoryMgr.SelectedItem(newIndex);
@@ -63,9 +63,9 @@ public class Controller : MonoBehaviour
         }
     }
 
-    void HandleRoundSelection()
+    void RoundSelection()
     {
-        HandleSelection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.roundMgr.roundList.Count, (newIndex) =>
+        Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.roundMgr.roundList.Count, (newIndex) =>
         {
             App.inst.sfx.Play();
             App.inst.uiMgr.roundMgr.SelectedItem(newIndex);
@@ -84,9 +84,9 @@ public class Controller : MonoBehaviour
         }
     }
 
-    void HandleMatchTableSelection()
+    void MatchTableSelection()
     {
-        HandleSelection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.matchTableMgr.matchList.Count, (newIndex) =>
+        Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.matchTableMgr.matchList.Count, (newIndex) =>
         {
             App.inst.sfx.Play();
             App.inst.uiMgr.matchTableMgr.SelectedItem(newIndex);
@@ -116,9 +116,9 @@ public class Controller : MonoBehaviour
         }
     }
 
-    void HandleResultSelection()
+    void ResultSelection()
     {
-        HandleSelection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.resultMgr.btnImg.Length, (newIndex) =>
+        Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.resultMgr.btnImg.Length, (newIndex) =>
         {
             App.inst.sfx.Play();
             App.inst.uiMgr.resultMgr.btnImg[0].color = (newIndex == 0) ? Color.yellow : Color.white;
@@ -149,7 +149,7 @@ public class Controller : MonoBehaviour
         }
     }
     
-    void HandleSelection(KeyCode rightKey, KeyCode leftKey, int itemCount, System.Action<int> onItemSelected)
+    void Selection(KeyCode rightKey, KeyCode leftKey, int itemCount, System.Action<int> onItemSelected)
     {
         if (Input.GetKeyDown(rightKey))
         {
