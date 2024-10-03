@@ -36,9 +36,9 @@ public class MatchTableMgr : Mgrs
     public int cntTime = 30;
     IEnumerator Timer()
     {
-        while (cntTime > 0)
+        while (cntTime >= 0)
         {
-            if (cntTime < 10)
+            if (cntTime <= 10)
             {
                 timerImg.color = Color.red;
             }
@@ -87,6 +87,7 @@ public class MatchTableMgr : Mgrs
     {
         currentRoundPairs = new List<KeyValuePair<string, Sprite>>(curCategoryGameDic);
         Shuffle(currentRoundPairs);
+        
 
         ShowNextPair();
     }
@@ -109,7 +110,6 @@ public class MatchTableMgr : Mgrs
             matchList[0].text.text = currentRoundPairs[currentPairIndex].Key;
             matchList[0].img.sprite = currentRoundPairs[currentPairIndex].Value;
             matchList[1].text.text = currentRoundPairs[currentPairIndex + 1].Key;
-            
             matchList[1].img.sprite = currentRoundPairs[currentPairIndex + 1].Value;
             
             StartTimer();
@@ -133,27 +133,40 @@ public class MatchTableMgr : Mgrs
             ShowNextPair();
         }
     }
+
+    public bool win = false;
     public void SelectLeft()
     {
+        win = true;
         matchAnim.SetTrigger("RedWin");
-        
         Count();
-        AdvanceToNextRound(currentRoundPairs[currentPairIndex]);
         StartCoroutine(AfterDelay());
+        
+        //AdvanceToNextRound(currentRoundPairs[currentPairIndex]);
     }
 
     public void SelectRight()
     {
+        win = false;
         matchAnim.SetTrigger("BlueWin");
         Count();
-        AdvanceToNextRound(currentRoundPairs[currentPairIndex + 1]);
         StartCoroutine(AfterDelay());
+        //AdvanceToNextRound(currentRoundPairs[currentPairIndex + 1]);
     }
 
     IEnumerator AfterDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
+        if (win)
+        {
+            AdvanceToNextRound(currentRoundPairs[currentPairIndex]);
+        }
+        else
+        {
+            AdvanceToNextRound(currentRoundPairs[currentPairIndex + 1]);
+        }
         matchAnim.SetTrigger("Idle");
+        
     }
     
     

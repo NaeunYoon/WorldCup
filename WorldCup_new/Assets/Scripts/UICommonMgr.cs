@@ -9,12 +9,14 @@ public class UICommonMgr : MonoBehaviour
   public RoundMgr roundMgr = null;
   public MatchTableMgr matchTableMgr = null;
   public ResultMgr resultMgr = null;
+  public ComfirmMgr confirmMgr = null;
   public GameObject PopImg = null;
   public virtual void Create() 
   {
     openingMgr.Create();
     categoryMgr.Create();
     roundMgr.Create();
+    confirmMgr.Create();
     matchTableMgr.Create();
     resultMgr.Create();
   }
@@ -23,6 +25,7 @@ public class UICommonMgr : MonoBehaviour
   {
     resultMgr.Delete();
     matchTableMgr.Delete();
+    confirmMgr.Delete();
     roundMgr.Delete();
     categoryMgr.Delete();
     openingMgr.Delete();

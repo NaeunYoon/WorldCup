@@ -26,6 +26,9 @@ public class Controller : MonoBehaviour
 
             if (App.inst.uiMgr.roundMgr.IsShow())
                 RoundSelection();
+            
+            if (App.inst.uiMgr.confirmMgr.IsShow())
+                Confirmation();
 
             if (App.inst.uiMgr.matchTableMgr.IsShow())
                 MatchTableSelection();
@@ -79,11 +82,24 @@ public class Controller : MonoBehaviour
             App.inst.uiMgr.roundMgr.Hide(() =>
             {
                 index = 0;
-                App.inst.uiMgr.matchTableMgr.Show();
+                App.inst.uiMgr.confirmMgr.Show();
             });
         }
     }
 
+    void Confirmation()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            App.inst.sfx.Play();
+            App.inst.uiMgr.confirmMgr.Hide(() =>
+            {
+                index = 0;
+                App.inst.uiMgr.matchTableMgr.Show();
+            });
+        }
+    }
+    
     void MatchTableSelection()
     {
         Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.matchTableMgr.matchList.Count, (newIndex) =>
@@ -121,8 +137,17 @@ public class Controller : MonoBehaviour
         Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.resultMgr.btnImg.Length, (newIndex) =>
         {
             App.inst.sfx.Play();
-            App.inst.uiMgr.resultMgr.btnImg[0].color = (newIndex == 0) ? Color.yellow : Color.white;
-            App.inst.uiMgr.resultMgr.btnImg[1].color = (newIndex == 1) ? Color.yellow : Color.white;
+
+            if (newIndex == 0)
+            {
+                App.inst.uiMgr.resultMgr.btnImg[0].OnBtn();
+                App.inst.uiMgr.resultMgr.btnImg[1].OffBtn();
+            }
+            else
+            {
+                App.inst.uiMgr.resultMgr.btnImg[0].OffBtn();
+                App.inst.uiMgr.resultMgr.btnImg[1].OnBtn();
+            }
             isClick = (newIndex == 1);
         });
 
@@ -161,8 +186,6 @@ public class Controller : MonoBehaviour
                 index++;
                 onItemSelected(index);
             }
-            
-            
         }
         else if (Input.GetKeyDown(leftKey))
         {

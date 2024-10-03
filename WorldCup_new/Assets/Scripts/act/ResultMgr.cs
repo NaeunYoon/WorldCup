@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ResultMgr : Mgrs
 {
     public MatchPrefab result = null;
-    public Image[] btnImg = new Image[2];
+    public BtnPrefab[] btnImg = new BtnPrefab[2];
     public bool isChecked =false;
     
     public override void Create()
