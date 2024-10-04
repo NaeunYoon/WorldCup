@@ -259,6 +259,7 @@ MonoBehaviour:
   selectedMark: {fileID: 6603691806417077372}
   text: {fileID: 9184608524589021298}
   img: {fileID: 8787631035602307632}
+  rect: {fileID: 0}
 --- !u!1 &3775851277404755232
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,8 +478,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc42227dd669eb34cbcb6f5a31c1b08b, type: 2}
-  m_sharedMaterial: {fileID: -3506226637487680542, guid: dc42227dd669eb34cbcb6f5a31c1b08b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5754cdf9e0127044691c5847646395d9, type: 2}
+  m_sharedMaterial: {fileID: -8104384588885113850, guid: 5754cdf9e0127044691c5847646395d9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
