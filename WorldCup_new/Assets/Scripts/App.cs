@@ -12,6 +12,9 @@ public class App : MonoBehaviour
 
     public AudioSource bgm = null;
     public AudioSource sfx = null;
+
+    public AudioClip[] bgmSource = new AudioClip[2];
+    public AudioClip[] sfxSource = new AudioClip[4];
     
     public void Start()
     {

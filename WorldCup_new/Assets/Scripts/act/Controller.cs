@@ -48,7 +48,9 @@ public class Controller : MonoBehaviour
     {
         Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.categoryMgr.categoryList.Count, (newIndex) =>
         {
+            App.inst.sfx.clip = App.inst.sfxSource[1];
             App.inst.sfx.Play();
+
             App.inst.uiMgr.categoryMgr.SelectedItem(newIndex);
             App.inst.uiMgr.matchTableMgr.categoryIndex = newIndex;
             selectedcategoryName = App.inst.uiMgr.categoryMgr.categoryList[newIndex].name;
@@ -57,6 +59,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            App.inst.sfx.clip = App.inst.sfxSource[0];
             App.inst.sfx.Play();
             App.inst.uiMgr.categoryMgr.Hide(() =>
             {
@@ -70,6 +73,7 @@ public class Controller : MonoBehaviour
     {
         Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.roundMgr.roundList.Count, (newIndex) =>
         {
+            App.inst.sfx.clip = App.inst.sfxSource[1];
             App.inst.sfx.Play();
             App.inst.uiMgr.roundMgr.SelectedItem(newIndex);
             App.inst.uiMgr.matchTableMgr.RoundIndex = newIndex;
@@ -78,6 +82,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            App.inst.sfx.clip = App.inst.sfxSource[0];
             App.inst.sfx.Play();
             App.inst.uiMgr.roundMgr.Hide(() =>
             {
@@ -104,6 +109,7 @@ public class Controller : MonoBehaviour
     {
         Selection(KeyCode.RightArrow, KeyCode.LeftArrow, App.inst.uiMgr.matchTableMgr.matchList.Count, (newIndex) =>
         {
+            App.inst.sfx.clip = App.inst.sfxSource[1];
             App.inst.sfx.Play();
             App.inst.uiMgr.matchTableMgr.SelectedItem(newIndex);
             isRight = (newIndex == 1);
@@ -111,6 +117,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            App.inst.sfx.clip = App.inst.sfxSource[0];
             App.inst.sfx.Play();
             if (!isRight)
                 App.inst.uiMgr.matchTableMgr.SelectLeft();
@@ -204,6 +211,7 @@ public class Controller : MonoBehaviour
     public void GameStart()
     {
         isGameStarted = true;
+        App.inst.sfx.clip = App.inst.sfxSource[0];
         App.inst.sfx.Play();
         App.inst.uiMgr.openingMgr.Hide(() =>
         {
