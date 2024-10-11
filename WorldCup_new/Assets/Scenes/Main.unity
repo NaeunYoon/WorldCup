@@ -3778,7 +3778,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934887234}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 377c3915ce7ab5646a6fb631cc0b218d, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b853eb162572d624fb42d682c857fd43, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -4431,19 +4431,22 @@ MonoBehaviour:
   root: {fileID: 639469390}
   txt: {fileID: 393321313}
   cnt: {fileID: 1329055113}
-  count: 0
+  timer: {fileID: 267101584}
+  matchAnim: {fileID: 749348431}
+  vs_1: {fileID: 1387366336}
+  vs_2: {fileID: 1073924934}
+  timerImg: {fileID: 1388087074}
+  timerSprite:
+  - {fileID: 21300000, guid: a4cfacb20d096ef44810a7c6ba5992e1, type: 3}
+  - {fileID: 21300000, guid: 148798d3b319523458ce3c3f87be371c, type: 3}
+  vs_1_particle: {fileID: 8854872804140740396}
   matchList:
   - {fileID: 1711056013}
   - {fileID: 745828791}
+  cntTime: 30
+  count: 0
   categoryIndex: 0
   RoundIndex: 0
-  matchAnim: {fileID: 749348431}
-  timer: {fileID: 267101584}
-  vs_1: {fileID: 1387366336}
-  vs_1_particle: {fileID: 8854872804140740396}
-  vs_2: {fileID: 1073924934}
-  timerImg: {fileID: 1388087074}
-  cntTime: 30
   win: 0
 --- !u!95 &1037493962
 Animator:
@@ -6433,7 +6436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 114c8b0a36982c14a8682c0fb994c4a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4cfacb20d096ef44810a7c6ba5992e1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6628,7 +6631,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
   m_WaitForFirstFrame: 1
@@ -9293,7 +9296,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058744633}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 377c3915ce7ab5646a6fb631cc0b218d, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b853eb162572d624fb42d682c857fd43, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
